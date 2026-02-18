@@ -20,7 +20,7 @@ def info_dataset(df) -> dict:
     return info
 
 
-def gestisci_valori_nulli(df, strategia: str = " media ") -> "DataFrame":
+def gestisci_valori_nulli(df, strategia: str = "media") -> "DataFrame":
     """
     Gestisce i valori nulli nel DataFrame.
 
@@ -34,19 +34,19 @@ def gestisci_valori_nulli(df, strategia: str = " media ") -> "DataFrame":
     Raises :
     ValueError : se la strategia non e tra quelle supportate
     """
-    if strategia == " media ":
+    if strategia == "media":
         return df.fillna(df.mean())
-    elif strategia == " mediana ":
+    elif strategia == "mediana":
         return df.fillna(df.median())
-    elif strategia == " elimina ":
+    elif strategia == "elimina":
         return df.dropna()
-    elif strategia == " zero ":
+    elif strategia == "zero":
         return df.fillna(0)
     else:
         raise ValueError(f"Strategia non supportata: {strategia}")
 
 
-def rileva_outlier(df, colonna: str, metodo: str = "iqr ") -> list:
+def rileva_outlier(df, colonna: str, metodo: str = "iqr") -> list:
     """
     Rileva gli outlier in una colonna specifica .
 
@@ -75,3 +75,31 @@ def rileva_outlier(df, colonna: str, metodo: str = "iqr ") -> list:
         raise ValueError(f"Metodo non supportato: {metodo}")
 
     return outliers
+
+
+def normalizza_colonne(df, colonne: list, metodo: str = "minmax"):
+    """
+    Normalizza le colonne specificate.
+
+    Args :
+    df: DataFrame
+    colonne : lista di nomi delle colonne
+    metodo : "minmax" o "standard" (z- score)
+
+    Returns :
+    DataFrame con colonne normalizzate
+    """
+
+    df_normalizzato = df.copy()
+    for colonna in colonne:
+        if metodo == "minmax":
+            min_val = df[colonna].min()
+            max_val = df[colonna].max()
+            df_normalizzato[colonna] = (df[colonna] - min_val) / (max_val - min_val)
+        elif metodo == "standard":
+            mean = df[colonna].mean()
+            std = df[colonna].std()
+            df_normalizzato[colonna] = (df[colonna] - mean) / std
+        else:
+            raise ValueError(f"Metodo non supportato: {metodo}")
+    return df_normalizzato
