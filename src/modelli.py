@@ -10,18 +10,18 @@ def dividi_dataset(df, colonna_target: str,
     """
     Divide il dataset in training set e test set.
 
-    Args :
+    Args:
     df: DataFrame completo
-    colonna_target : nome della colonna target
-    test_size : proporzione del test set ( default 0.2)
-    random_state : seed per la riproducibilita
+    colonna_target: nome della colonna target
+    test_size: proporzione del test set ( default 0.2)
+    random_state: seed per la riproducibilita
 
-    Returns :
-    tuple : ( X_train , X_test , y_train , y_test )
+    Returns:
+    tuple: ( X_train, X_test, y_train, y_test )
 
-    Raises :
-    ValueError : se test_size non e tra 0 e 1
-    KeyError : se colonna_target non esiste nel DataFrame
+    Raises:
+    ValueError: se test_size non e tra 0 e 1
+    KeyError: se colonna_target non esiste nel DataFrame
     """
 
     if not (0 < test_size < 1):
@@ -37,10 +37,10 @@ def dividi_dataset(df, colonna_target: str,
 
 def addestra_regressione_lineare(X_train, y_train, X_test) -> dict:
     """
-    Addestra un modello di Regressione Lineare .
+    Addestra un modello di Regressione Lineare.
 
-    Returns :
-    dict con chiavi : ’modello ’, ’predizioni ’, ’ coefficienti ’, ’intercetta ’
+    Returns:
+    dict con chiavi: ’modello ’, ’predizioni ’, ’ coefficienti ’, ’intercetta ’
     """
 
     modello = LinearRegression()
@@ -97,11 +97,11 @@ def addestra_knn(X_train, y_train, k_list=[3, 5, 7, 9, 11]) -> dict:
 def addestra_decision_tree(X_train, y_train, X_test,
                            max_depth_list=[3, 5, 7, 10, None]) -> dict:
     """
-    Addestra un modello Decision Tree .
+    Addestra un modello Decision Tree.
     Sperimenta con diverse profondita (3 , 5 , 7 , 10 , None ).
 
-    Returns :
-    dict con chiavi : ’modello ’, ’predizioni ’, ’ miglior_profondita ’,
+    Returns:
+    dict con chiavi: ’modello ’, ’predizioni ’, ’ miglior_profondita ’,
     ’ importanza_feature ’
     """
     miglior_profondita = None
@@ -145,10 +145,10 @@ def addestra_svr(X_train, y_train, X_test,
                  kernel: str = " rbf ") -> dict:
     """
     Addestra un modello Support Vector Regression .
-    Sperimenta con diversi kernel ( ’ linear ’, ’rbf ’, ’poly ’).
+    Sperimenta con diversi kernel (’linear’, ’rbf’, ’poly’).
 
-    Returns :
-    dict con chiavi : ’modello ’, ’predizioni ’, ’ miglior_kernel ’
+    Returns:
+    dict con chiavi: ’modello’, ’predizioni’, ’ miglior_kernel’
     """
 
     kernel_list = ['linear', 'rbf', 'poly']
@@ -181,10 +181,10 @@ def addestra_svr(X_train, y_train, X_test,
 def addestra_tutti_i_modelli(X_train, y_train, X_test) -> dict:
 
     """
-    Addestra tutti i modelli disponibili e restituisce i risultati .
+    Addestra tutti i modelli disponibili e restituisce i risultati.
 
-    Returns :
-    dict : { nome_modello : risultati_dict }
+    Returns:
+    dict: { nome_modello: risultati_dict }
     """
 
     risultati = {}

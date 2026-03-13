@@ -24,14 +24,14 @@ def gestisci_valori_nulli(df, strategia: str = "media") -> "DataFrame":
     """
     Gestisce i valori nulli nel DataFrame.
 
-    Args :
+    Args:
     df: DataFrame di input
     strategia : " media ", " mediana ", " elimina " o " zero "
 
-    Returns :
+    Returns:
     DataFrame pulito
 
-    Raises :
+    Raises:
     ValueError : se la strategia non e tra quelle supportate
     """
     if strategia == "media":
@@ -48,14 +48,14 @@ def gestisci_valori_nulli(df, strategia: str = "media") -> "DataFrame":
 
 def rileva_outlier(df, colonna: str, metodo: str = "iqr") -> list:
     """
-    Rileva gli outlier in una colonna specifica .
+    Rileva gli outlier in una colonna specifica.
 
-    Args :
+    Args:
     df: DataFrame
-    colonna : nome della colonna da analizzare
-    metodo : "iqr" ( InterQuartile Range ) o " zscore "
+    colonna: nome della colonna da analizzare
+    metodo: "iqr" (InterQuartile Range) o " zscore "
 
-    Returns :
+    Returns:
     Lista degli indici delle righe con outlier
     """
 
@@ -81,12 +81,12 @@ def normalizza_colonne(df, colonne: list, metodo: str = "minmax"):
     """
     Normalizza le colonne specificate.
 
-    Args :
+    Args:
     df: DataFrame
-    colonne : lista di nomi delle colonne
-    metodo : "minmax" o "standard" (z- score)
+    colonne: lista di nomi delle colonne
+    metodo: "minmax" o "standard" (z- score)
 
-    Returns :
+    Returns:
     DataFrame con colonne normalizzate
     """
 

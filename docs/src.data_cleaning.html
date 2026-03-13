@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.data_cleaning</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.data_cleaning</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cmarco%5Cpycharmprojects%5Cprogetto-immobiliare%5Csrc%5Cdata_cleaning.py">c:\users\marco\pycharmprojects\progetto-immobiliare\src\data_cleaning.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-gestisci_valori_nulli"><strong>gestisci_valori_nulli</strong></a>(df, strategia: str = 'media') -&gt; 'DataFrame'</dt><dd><span class="code">Gestisce&nbsp;i&nbsp;valori&nbsp;nulli&nbsp;nel&nbsp;DataFrame.<br>
+&nbsp;<br>
+Args:<br>
+df:&nbsp;DataFrame&nbsp;di&nbsp;input<br>
+strategia&nbsp;:&nbsp;"&nbsp;media&nbsp;",&nbsp;"&nbsp;mediana&nbsp;",&nbsp;"&nbsp;elimina&nbsp;"&nbsp;o&nbsp;"&nbsp;zero&nbsp;"<br>
+&nbsp;<br>
+Returns:<br>
+DataFrame&nbsp;pulito<br>
+&nbsp;<br>
+Raises:<br>
+ValueError&nbsp;:&nbsp;se&nbsp;la&nbsp;strategia&nbsp;non&nbsp;e&nbsp;tra&nbsp;quelle&nbsp;supportate</span></dd></dl>
+ <dl><dt><a name="-info_dataset"><strong>info_dataset</strong></a>(df) -&gt; dict</dt><dd><span class="code">Restituisce&nbsp;un&nbsp;dizionario&nbsp;con&nbsp;le&nbsp;informazioni&nbsp;di&nbsp;base&nbsp;del&nbsp;dataset&nbsp;:<br>
+-&nbsp;numero_righe&nbsp;:&nbsp;int<br>
+-&nbsp;numero_colonne&nbsp;:&nbsp;int<br>
+-&nbsp;colonne&nbsp;:&nbsp;list&nbsp;[&nbsp;str]<br>
+-&nbsp;tipi_dati&nbsp;:&nbsp;dict&nbsp;(&nbsp;nome_colonna&nbsp;:&nbsp;tipo&nbsp;)<br>
+-&nbsp;valori_nulli&nbsp;:&nbsp;dict&nbsp;(&nbsp;nome_colonna&nbsp;:&nbsp;conteggio&nbsp;)<br>
+-&nbsp;percentuale_nulli&nbsp;:&nbsp;dict&nbsp;(&nbsp;nome_colonna&nbsp;:&nbsp;percentuale&nbsp;)</span></dd></dl>
+ <dl><dt><a name="-normalizza_colonne"><strong>normalizza_colonne</strong></a>(df, colonne: list, metodo: str = 'minmax')</dt><dd><span class="code">Normalizza&nbsp;le&nbsp;colonne&nbsp;specificate.<br>
+&nbsp;<br>
+Args:<br>
+df:&nbsp;DataFrame<br>
+colonne:&nbsp;lista&nbsp;di&nbsp;nomi&nbsp;delle&nbsp;colonne<br>
+metodo:&nbsp;"minmax"&nbsp;o&nbsp;"standard"&nbsp;(z-&nbsp;score)<br>
+&nbsp;<br>
+Returns:<br>
+DataFrame&nbsp;con&nbsp;colonne&nbsp;normalizzate</span></dd></dl>
+ <dl><dt><a name="-rileva_outlier"><strong>rileva_outlier</strong></a>(df, colonna: str, metodo: str = 'iqr') -&gt; list</dt><dd><span class="code">Rileva&nbsp;gli&nbsp;outlier&nbsp;in&nbsp;una&nbsp;colonna&nbsp;specifica.<br>
+&nbsp;<br>
+Args:<br>
+df:&nbsp;DataFrame<br>
+colonna:&nbsp;nome&nbsp;della&nbsp;colonna&nbsp;da&nbsp;analizzare<br>
+metodo:&nbsp;"iqr"&nbsp;(InterQuartile&nbsp;Range)&nbsp;o&nbsp;"&nbsp;zscore&nbsp;"<br>
+&nbsp;<br>
+Returns:<br>
+Lista&nbsp;degli&nbsp;indici&nbsp;delle&nbsp;righe&nbsp;con&nbsp;outlier</span></dd></dl>
+</td></tr></table>
+</body></html>

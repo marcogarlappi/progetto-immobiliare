@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.utils</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.utils</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cmarco%5Cpycharmprojects%5Cprogetto-immobiliare%5Csrc%5Cutils.py">c:\users\marco\pycharmprojects\progetto-immobiliare\src\utils.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="math.html">math</a><br>
+</td><td class="multicolumn"><a href="random.html">random</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-arrotonda_intelligente"><strong>arrotonda_intelligente</strong></a>(valore: float) -&gt; float</dt><dd><span class="code">Arrotonda&nbsp;un&nbsp;valore&nbsp;in&nbsp;modo&nbsp;intelligente&nbsp;:<br>
+-&nbsp;Se&nbsp;&gt;&nbsp;1000:&nbsp;arrotonda&nbsp;all&nbsp;’intero<br>
+-&nbsp;Se&nbsp;&gt;&nbsp;1:&nbsp;arrotonda&nbsp;a&nbsp;2&nbsp;decimali<br>
+-&nbsp;Se&nbsp;&gt;&nbsp;0.01:&nbsp;arrotonda&nbsp;a&nbsp;4&nbsp;decimali<br>
+-&nbsp;Altrimenti&nbsp;:&nbsp;notazione&nbsp;scientifica<br>
+&nbsp;<br>
+Usa&nbsp;math&nbsp;.floor&nbsp;,&nbsp;math&nbsp;.ceil&nbsp;,&nbsp;math&nbsp;.&nbsp;log10<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+valore&nbsp;:&nbsp;numero&nbsp;da&nbsp;arrotondare<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+float&nbsp;:&nbsp;numero&nbsp;arrotondato</span></dd></dl>
+ <dl><dt><a name="-calcola_distanza_euclidea"><strong>calcola_distanza_euclidea</strong></a>(punto1: list, punto2: list) -&gt; float</dt><dd><span class="code">Calcola&nbsp;la&nbsp;distanza&nbsp;euclidea&nbsp;tra&nbsp;due&nbsp;punti&nbsp;n-dimensionali&nbsp;.<br>
+Usa&nbsp;math.sqrt()&nbsp;e&nbsp;math.pow().<br>
+&nbsp;<br>
+Raises:<br>
+ValueError:&nbsp;se&nbsp;i&nbsp;punti&nbsp;hanno&nbsp;dimensioni&nbsp;diverse<br>
+&nbsp;<br>
+Args:<br>
+punto1&nbsp;:&nbsp;lista&nbsp;di&nbsp;coordinate&nbsp;del&nbsp;primo&nbsp;punto&nbsp;(&nbsp;es.&nbsp;[1,&nbsp;2,&nbsp;3])<br>
+punto2&nbsp;:&nbsp;lista&nbsp;di&nbsp;coordinate&nbsp;del&nbsp;secondo&nbsp;punto&nbsp;(&nbsp;es.&nbsp;[4,&nbsp;5,&nbsp;6])<br>
+&nbsp;<br>
+Returns:<br>
+float&nbsp;:&nbsp;distanza&nbsp;euclidea&nbsp;tra&nbsp;i&nbsp;due&nbsp;punti</span></dd></dl>
+ <dl><dt><a name="-calcola_tempo_esecuzione"><strong>calcola_tempo_esecuzione</strong></a>(func)</dt><dd><span class="code">Decoratore&nbsp;che&nbsp;misura&nbsp;e&nbsp;stampa&nbsp;il&nbsp;tempo&nbsp;di&nbsp;esecuzione<br>
+di&nbsp;una&nbsp;funzione&nbsp;.&nbsp;Usa&nbsp;datetime&nbsp;per&nbsp;il&nbsp;calcolo&nbsp;.<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+func&nbsp;:&nbsp;funzione&nbsp;da&nbsp;decorare</span></dd></dl>
+ <dl><dt><a name="-crea_separatore"><strong>crea_separatore</strong></a>(carattere: str = '=', lunghezza: int = 55) -&gt; str</dt><dd><span class="code">Crea&nbsp;una&nbsp;stringa&nbsp;separatore&nbsp;per&nbsp;il&nbsp;report&nbsp;.<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+carattere&nbsp;:&nbsp;carattere&nbsp;da&nbsp;ripetere&nbsp;(&nbsp;default&nbsp;"=")<br>
+lunghezza&nbsp;:&nbsp;numero&nbsp;di&nbsp;caratteri&nbsp;da&nbsp;ripetere&nbsp;(&nbsp;default&nbsp;55)<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+str&nbsp;:&nbsp;stringa&nbsp;separatore&nbsp;(&nbsp;es.&nbsp;"=======================================================")</span></dd></dl>
+ <dl><dt><a name="-esporta_in_json"><strong>esporta_in_json</strong></a>(dati, percorso: str) -&gt; None</dt><dd><span class="code">Placeholder&nbsp;per&nbsp;futura&nbsp;implementazione&nbsp;.</span></dd></dl>
+ <dl><dt><a name="-formatta_numero"><strong>formatta_numero</strong></a>(numero: float, decimali: int = 2) -&gt; str</dt><dd><span class="code">Formatta&nbsp;un&nbsp;numero&nbsp;con&nbsp;separatore&nbsp;delle&nbsp;migliaia&nbsp;e&nbsp;decimali&nbsp;specificati&nbsp;.<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+numero&nbsp;:&nbsp;numero&nbsp;da&nbsp;formattare<br>
+decimali&nbsp;:&nbsp;numero&nbsp;di&nbsp;decimali&nbsp;da&nbsp;visualizzare&nbsp;(&nbsp;default&nbsp;2)<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+str&nbsp;:&nbsp;numero&nbsp;formattato&nbsp;come&nbsp;stringa</span></dd></dl>
+ <dl><dt><a name="-formatta_percentuale"><strong>formatta_percentuale</strong></a>(valore: float, decimali: int = 1) -&gt; str</dt><dd><span class="code">Converte&nbsp;un&nbsp;valore&nbsp;decimale&nbsp;in&nbsp;stringa&nbsp;percentuale&nbsp;.<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+valore&nbsp;:&nbsp;numero&nbsp;decimale&nbsp;da&nbsp;convertire&nbsp;(&nbsp;es.&nbsp;0.1234)<br>
+decimali&nbsp;:&nbsp;numero&nbsp;di&nbsp;decimali&nbsp;da&nbsp;visualizzare&nbsp;(&nbsp;default&nbsp;1)<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+str&nbsp;:&nbsp;valore&nbsp;formattato&nbsp;come&nbsp;percentuale&nbsp;(&nbsp;es.&nbsp;"12.3%")</span></dd></dl>
+ <dl><dt><a name="-genera_campione_casuale"><strong>genera_campione_casuale</strong></a>(lista: list, percentuale: float = 0.1, seed: int = 42) -&gt; list</dt><dd><span class="code">Estrae&nbsp;un&nbsp;campione&nbsp;casuale&nbsp;da&nbsp;una&nbsp;lista&nbsp;.<br>
+Usa&nbsp;random.sample().<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+lista&nbsp;:&nbsp;lista&nbsp;di&nbsp;elementi&nbsp;da&nbsp;cui&nbsp;estrarre&nbsp;il&nbsp;campione<br>
+percentuale&nbsp;:&nbsp;percentuale&nbsp;di&nbsp;elementi&nbsp;da&nbsp;estrarre&nbsp;(&nbsp;default&nbsp;0.1)<br>
+seed&nbsp;:&nbsp;seed&nbsp;per&nbsp;la&nbsp;generazione&nbsp;casuale&nbsp;(&nbsp;default&nbsp;42)<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+list&nbsp;:&nbsp;campione&nbsp;estratto&nbsp;dalla&nbsp;lista</span></dd></dl>
+ <dl><dt><a name="-genera_colori_casuali"><strong>genera_colori_casuali</strong></a>(n: int, seed: int = 42) -&gt; list</dt><dd><span class="code">Genera&nbsp;n&nbsp;colori&nbsp;casuali&nbsp;in&nbsp;formato&nbsp;esadecimale&nbsp;.<br>
+Usa&nbsp;random&nbsp;.&nbsp;seed&nbsp;()&nbsp;per&nbsp;la&nbsp;riproducibilita&nbsp;.<br>
+Utile&nbsp;per&nbsp;eventuali&nbsp;grafici&nbsp;o&nbsp;report&nbsp;.<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+n&nbsp;:&nbsp;numero&nbsp;di&nbsp;colori&nbsp;da&nbsp;generare<br>
+seed&nbsp;:&nbsp;seed&nbsp;per&nbsp;la&nbsp;generazione&nbsp;casuale&nbsp;(&nbsp;default&nbsp;42)<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+list&nbsp;:&nbsp;lista&nbsp;di&nbsp;stringhe&nbsp;con&nbsp;i&nbsp;colori&nbsp;esadecimali&nbsp;(&nbsp;es.&nbsp;["#1a2b3c",&nbsp;"#4d5e6f"])</span></dd></dl>
+ <dl><dt><a name="-timestamp_corrente"><strong>timestamp_corrente</strong></a>(formato: str = '%Y -%m -%d %H:%M:%S') -&gt; str</dt><dd><span class="code">Restituisce&nbsp;il&nbsp;timestamp&nbsp;corrente&nbsp;formattato.<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+formato&nbsp;:&nbsp;formato&nbsp;del&nbsp;timestamp&nbsp;(&nbsp;default&nbsp;"%Y-%m-%d&nbsp;%H:%M:%S")<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+str&nbsp;:&nbsp;timestamp&nbsp;formattato&nbsp;(&nbsp;es.&nbsp;"2025-01-15&nbsp;14:30:22")</span></dd></dl>
+</td></tr></table>
+</body></html>

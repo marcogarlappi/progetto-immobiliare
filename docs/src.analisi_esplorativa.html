@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.analisi_esplorativa</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.analisi_esplorativa</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cmarco%5Cpycharmprojects%5Cprogetto-immobiliare%5Csrc%5Canalisi_esplorativa.py">c:\users\marco\pycharmprojects\progetto-immobiliare\src\analisi_esplorativa.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="datetime.html">datetime</a><br>
+</td><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="scipy.stats.html">scipy.stats</a><br>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-analisi_distribuzione"><strong>analisi_distribuzione</strong></a>(df, colonna: str) -&gt; dict</dt><dd><span class="code">Analizza&nbsp;la&nbsp;distribuzione&nbsp;di&nbsp;una&nbsp;colonna&nbsp;specifica.<br>
+&nbsp;<br>
+Utilizza&nbsp;scipy.stats&nbsp;per:<br>
+-&nbsp;Test&nbsp;di&nbsp;normalita&nbsp;(Shapiro-Wilk&nbsp;se&nbsp;possibile,&nbsp;o&nbsp;altri)<br>
+-&nbsp;Calcolo&nbsp;skewness&nbsp;e&nbsp;kurtosis<br>
+&nbsp;<br>
+Returns:<br>
+dict&nbsp;con&nbsp;i&nbsp;risultati&nbsp;dell’analisi</span></dd></dl>
+ <dl><dt><a name="-genera_report_testuale"><strong>genera_report_testuale</strong></a>(df, percorso_output: str) -&gt; None</dt><dd><span class="code">Genera&nbsp;un&nbsp;report&nbsp;completo&nbsp;in&nbsp;formato&nbsp;testo&nbsp;(.txt)&nbsp;con:<br>
+-&nbsp;Riepilogo&nbsp;del&nbsp;dataset<br>
+-&nbsp;Statistiche&nbsp;descrittive&nbsp;formattate<br>
+-&nbsp;Correlazioni&nbsp;significative<br>
+-&nbsp;Osservazioni&nbsp;sugli&nbsp;outlier<br>
+&nbsp;<br>
+Utilizza&nbsp;f-string&nbsp;e&nbsp;string.format()&nbsp;per&nbsp;la&nbsp;formattazione.<br>
+Salva&nbsp;il&nbsp;report&nbsp;nella&nbsp;cartella&nbsp;output/.<br>
+&nbsp;<br>
+Esempio&nbsp;di&nbsp;report:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=======================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REPORT&nbsp;ANALISI&nbsp;IMMOBILIARE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data:&nbsp;2025&nbsp;-01&nbsp;-15&nbsp;14:30:22<br>
+&nbsp;&nbsp;&nbsp;&nbsp;=======================================================<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;RIEPILOGO&nbsp;DATASET<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Numero&nbsp;di&nbsp;campioni:&nbsp;20&nbsp;,640<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Numero&nbsp;di&nbsp;feature:&nbsp;8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Feature&nbsp;target:&nbsp;MedHouseVal<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;STATISTICHE&nbsp;DESCRITTIVE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Colonna&nbsp;Media&nbsp;Mediana&nbsp;StdDev&nbsp;Min&nbsp;Max<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MedInc&nbsp;3.8707&nbsp;3.5348&nbsp;1.8998&nbsp;0.4999<br>
+&nbsp;&nbsp;&nbsp;&nbsp;15.0001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HouseAge&nbsp;28.6395&nbsp;29.0000&nbsp;12.5856&nbsp;1.0000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;52.0000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...</span></dd></dl>
+ <dl><dt><a name="-matrice_correlazione"><strong>matrice_correlazione</strong></a>(df) -&gt; 'DataFrame'</dt><dd><span class="code">Calcola&nbsp;e&nbsp;restituisce&nbsp;la&nbsp;matrice&nbsp;di&nbsp;correlazione.<br>
+&nbsp;<br>
+Identifica&nbsp;le&nbsp;coppie&nbsp;di&nbsp;feature&nbsp;con&nbsp;correlazione&nbsp;&gt;&nbsp;0.7&nbsp;o&nbsp;&lt;&nbsp;-0.7.<br>
+&nbsp;<br>
+Returns:<br>
+DataFrame&nbsp;con&nbsp;la&nbsp;matrice&nbsp;di&nbsp;correlazione</span></dd></dl>
+ <dl><dt><a name="-statistiche_descrittive"><strong>statistiche_descrittive</strong></a>(df) -&gt; dict</dt><dd><span class="code">Calcola&nbsp;statistiche&nbsp;descrittive&nbsp;per&nbsp;ogni&nbsp;colonna&nbsp;numerica&nbsp;:<br>
+-&nbsp;media&nbsp;,&nbsp;mediana&nbsp;,&nbsp;moda<br>
+-&nbsp;deviazione&nbsp;standard&nbsp;,&nbsp;varianza<br>
+-&nbsp;minimo&nbsp;,&nbsp;massimo&nbsp;,&nbsp;range<br>
+-&nbsp;primo&nbsp;quartile&nbsp;(Q1),&nbsp;terzo&nbsp;quartile&nbsp;(Q3),&nbsp;IQR<br>
+-&nbsp;skewness&nbsp;,&nbsp;kurtosis<br>
+&nbsp;<br>
+Utilizza&nbsp;NumPy&nbsp;e&nbsp;SciPy&nbsp;per&nbsp;i&nbsp;calcoli&nbsp;.<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+dict&nbsp;:&nbsp;dizionario&nbsp;annidato&nbsp;{&nbsp;nome_colonna&nbsp;:&nbsp;{&nbsp;statistica&nbsp;:&nbsp;valore&nbsp;}}</span></dd></dl>
+</td></tr></table>
+</body></html>

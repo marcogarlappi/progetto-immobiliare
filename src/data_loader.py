@@ -4,10 +4,10 @@ import os
 
 def carica_dataset() -> tuple:
     """
-    Carica il California Housing Dataset da scikit - learn .
+    Carica il California Housing Dataset da scikit-learn.
 
-    Returns :
-    tuple : ( DataFrame con le feature , Series con il target )
+    Returns:
+    tuple: (DataFrame con le feature, Series con il target)
     """
     data = fetch_california_housing(as_frame=True)
     tuple_data = (data.data, data.target)
@@ -15,14 +15,13 @@ def carica_dataset() -> tuple:
 
 def salva_csv(df, percorso: str) -> None:
     """
-    Salva un DataFrame in formato CSV nella cartella data /.
-    Verifica che la cartella esista , altrimenti la crea .
+    Salva un DataFrame in formato CSV nella cartella data/.
+    Verifica che la cartella esista, altrimenti la crea.
 
-    Args :
+    Args:
     df: DataFrame da salvare
 
-
-    percorso : percorso del file di output
+    percorso: percorso del file di output
     """
     if not os.path.exists('data'):
         os.makedirs('data')
@@ -33,13 +32,13 @@ def salva_csv(df, percorso: str) -> None:
 
 def carica_csv(percorso: str):
     """
-    Carica un file CSV e lo restituisce come DataFrame .
-    Gestisce il caso in cui il file non esista .
+    Carica un file CSV e lo restituisce come DataFrame.
+    Gestisce il caso in cui il file non esista.
 
-    Args :
-    percorso : percorso del file da caricare
+    Args:
+    percorso: percorso del file da caricare
 
-    Returns :
+    Returns:
     DataFrame oppure None se il file non esiste
     """
     if not os.path.exists(percorso):

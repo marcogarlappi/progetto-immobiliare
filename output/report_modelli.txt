@@ -1,0 +1,40 @@
+==================================================
+REPORT PRESTAZIONI MODELLI DI REGRESSIONE
+Data generazione: 2026-03-04 14:27:44
+==================================================
+
+1. TABELLA COMPARATIVA
+Modello                   | Parametro Migliore  
+--------------------------------------------------
+regressione_lineare       | N/A                 
+knn                       | 9                   
+decision_tree             | 10                  
+svr                       | rbf                 
+
+==================================================
+2. DETTAGLI MODELLI
+
+>>> MODELLO: REGRESSIONE_LINEARE
+   coefficienti: [  6.50587593   0.49593713 -17.39635295  26.41808819  -0.07241483
+  -4.38194802  -3.9502473   -4.35442897]
+   intercetta: 3.636539898616288
+
+>>> MODELLO: KNN
+   modello_ottimizzato: KNeighborsRegressor(n_neighbors=9)
+   miglior_k: 9
+   mse_validazione: 0.3925573962782427
+   tutti_i_risultati: {3: {'mse_cv': np.float64(0.42967687148270156)}, 5: {'mse_cv': np.float64(0.3976726339532607)}, 7: {'mse_cv': np.float64(0.39377012858179555)}, 9: {'mse_cv': np.float64(0.3925573962782427)}, 11: {'mse_cv': np.float64(0.39370820385034666)}}
+
+>>> MODELLO: DECISION_TREE
+   miglior_profondita: 10
+   importanza_feature: {'MedInc': np.float64(0.6097562119081917), 'HouseAge': np.float64(0.044280764107257224), 'AveRooms': np.float64(0.03943259034049418), 'AveBedrms': np.float64(0.012607342326051091), 'Population': np.float64(0.016740013400493088), 'AveOccup': np.float64(0.13080301627748075), 'Latitude': np.float64(0.080243375309141), 'Longitude': np.float64(0.06613668633089094)}
+
+>>> MODELLO: SVR
+   miglior_kernel: rbf
+   risultati_cv: {'linear': np.float64(0.5528926473442046), 'rbf': np.float64(0.45379006791384235), 'poly': np.float64(0.5200214947240733)}
+
+==================================================
+3. RACCOMANDAZIONE FINALE
+Basandosi sui risultati della Cross-Validation,
+il modello consigliato è: KNN
+==================================================

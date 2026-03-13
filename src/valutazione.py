@@ -7,14 +7,14 @@ from datetime import datetime
 
 def calcola_metriche(y_true, y_pred) -> dict:
     """
-    Calcola le metriche di valutazione per la regressione :
+    Calcola le metriche di valutazione per la regressione:
     - MAE ( Mean Absolute Error )
     - MSE ( Mean Squared Error )
     - RMSE ( Root Mean Squared Error )
     - R2 Score
     - MAPE ( Mean Absolute Percentage Error )
 
-    Returns :
+    Returns:
     dict con tutte le metriche calcolate
     """
 
@@ -36,10 +36,10 @@ def calcola_metriche(y_true, y_pred) -> dict:
 
 def cross_validation_modello(modello, X, y, cv: int = 5) -> dict:
     """
-    Esegue la cross - validation su un modello .
+    Esegue la cross-validation su un modello.
 
-    Returns :
-    dict con: ’scores ’, ’media ’, ’ deviazione_standard ’
+    Returns:
+    dict con: ’scores’, ’media’, ’deviazione_standard’
     """
 
     scores = cross_val_score(modello, X, y, cv=cv, scoring='neg_mean_squared_error')
@@ -57,13 +57,13 @@ def cross_validation_modello(modello, X, y, cv: int = 5) -> dict:
 
 def confronta_modelli(risultati: dict, y_test) -> str:
     """
-    Confronta tutti i modelli e determina il migliore .
+    Confronta tutti i modelli e determina il migliore.
 
-    Args :
-    risultati : dizionario con i risultati di ogni modello
+    Args:
+    risultati: dizionario con i risultati di ogni modello
 
-    Returns :
-    str : nome del modello migliore
+    Returns:
+    str: nome del modello migliore
     """
 
     miglior_modello = None
@@ -94,15 +94,15 @@ def confronta_modelli(risultati: dict, y_test) -> str:
 def genera_report_modelli(risultati: dict, percorso_output: str) -> None:
     """
     Genera un report testuale dettagliato con i risultati
-    di tutti i modelli , inclusa la cross - validation .
+    di tutti i modelli , inclusa la cross - validation.
 
-    Il report deve includere :
+    Il report deve includere:
     - Tabella comparativa di tutti i modelli
     - Dettagli per ogni modello
     - Raccomandazione del modello migliore
     - Data e ora della generazione
 
-    Salva nella cartella output /.
+    Salva nella cartella output/.
     """
     # 1. Crea la cartella di output se non esiste
     os.makedirs(os.path.dirname(percorso_output), exist_ok=True)
