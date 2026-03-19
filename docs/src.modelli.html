@@ -21,29 +21,11 @@
     y_train,
     X_test,
     max_depth_list=[3, 5, 7, 10, None]
-) -&gt; dict</dt><dd><span class="code">Addestra&nbsp;un&nbsp;modello&nbsp;Decision&nbsp;Tree.<br>
-Sperimenta&nbsp;con&nbsp;diverse&nbsp;profondita&nbsp;(3&nbsp;,&nbsp;5&nbsp;,&nbsp;7&nbsp;,&nbsp;10&nbsp;,&nbsp;None&nbsp;).<br>
-&nbsp;<br>
-Returns:<br>
-dict&nbsp;con&nbsp;chiavi:&nbsp;’modello&nbsp;’,&nbsp;’predizioni&nbsp;’,&nbsp;’&nbsp;miglior_profondita&nbsp;’,<br>
-’&nbsp;importanza_feature&nbsp;’</span></dd></dl>
- <dl><dt><a name="-addestra_knn"><strong>addestra_knn</strong></a>(X_train, y_train, k_list=[3, 5, 7, 9, 11]) -&gt; dict</dt><dd><span class="code">Trova&nbsp;il&nbsp;miglior&nbsp;valore&nbsp;di&nbsp;k&nbsp;usando&nbsp;la&nbsp;Cross-Validation&nbsp;sul&nbsp;Training&nbsp;Set.<br>
-&nbsp;<br>
-Returns:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dict&nbsp;con&nbsp;il&nbsp;miglior&nbsp;modello&nbsp;addestrato&nbsp;e&nbsp;i&nbsp;risultati&nbsp;dettagliati.</span></dd></dl>
- <dl><dt><a name="-addestra_regressione_lineare"><strong>addestra_regressione_lineare</strong></a>(X_train, y_train, X_test) -&gt; dict</dt><dd><span class="code">Addestra&nbsp;un&nbsp;modello&nbsp;di&nbsp;Regressione&nbsp;Lineare.<br>
-&nbsp;<br>
-Returns:<br>
-dict&nbsp;con&nbsp;chiavi:&nbsp;’modello&nbsp;’,&nbsp;’predizioni&nbsp;’,&nbsp;’&nbsp;coefficienti&nbsp;’,&nbsp;’intercetta&nbsp;’</span></dd></dl>
- <dl><dt><a name="-addestra_svr"><strong>addestra_svr</strong></a>(X_train, y_train, X_test, kernel: str = ' rbf ') -&gt; dict</dt><dd><span class="code">Addestra&nbsp;un&nbsp;modello&nbsp;Support&nbsp;Vector&nbsp;Regression&nbsp;.<br>
-Sperimenta&nbsp;con&nbsp;diversi&nbsp;kernel&nbsp;(’linear’,&nbsp;’rbf’,&nbsp;’poly’).<br>
-&nbsp;<br>
-Returns:<br>
-dict&nbsp;con&nbsp;chiavi:&nbsp;’modello’,&nbsp;’predizioni’,&nbsp;’&nbsp;miglior_kernel’</span></dd></dl>
- <dl><dt><a name="-addestra_tutti_i_modelli"><strong>addestra_tutti_i_modelli</strong></a>(X_train, y_train, X_test) -&gt; dict</dt><dd><span class="code">Addestra&nbsp;tutti&nbsp;i&nbsp;modelli&nbsp;disponibili&nbsp;e&nbsp;restituisce&nbsp;i&nbsp;risultati.<br>
-&nbsp;<br>
-Returns:<br>
-dict:&nbsp;{&nbsp;nome_modello:&nbsp;risultati_dict&nbsp;}</span></dd></dl>
+) -&gt; dict</dt></dl>
+ <dl><dt><a name="-addestra_knn"><strong>addestra_knn</strong></a>(X_train, y_train, X_test, k_list=[3, 5, 7, 9, 11]) -&gt; dict</dt></dl>
+ <dl><dt><a name="-addestra_regressione_lineare"><strong>addestra_regressione_lineare</strong></a>(X_train, y_train, X_test) -&gt; dict</dt></dl>
+ <dl><dt><a name="-addestra_svr"><strong>addestra_svr</strong></a>(X_train, y_train, X_test, kernel_list=['linear', 'rbf']) -&gt; dict</dt></dl>
+ <dl><dt><a name="-addestra_tutti_i_modelli"><strong>addestra_tutti_i_modelli</strong></a>(X_train, y_train, X_test) -&gt; dict</dt></dl>
  <dl><dt><a name="-dividi_dataset"><strong>dividi_dataset</strong></a>(
     df,
     colonna_target: str,

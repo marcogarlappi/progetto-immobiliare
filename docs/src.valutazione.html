@@ -17,42 +17,18 @@
     
 <tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
 <td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
-</td><td class="multicolumn"><a href="os.html">os</a><br>
-</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
 <table class="section">
 <tr class="decor functions-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<td class="singlecolumn"><dl><dt><a name="-calcola_metriche"><strong>calcola_metriche</strong></a>(y_true, y_pred) -&gt; dict</dt><dd><span class="code">Calcola&nbsp;le&nbsp;metriche&nbsp;di&nbsp;valutazione&nbsp;per&nbsp;la&nbsp;regressione:<br>
--&nbsp;MAE&nbsp;(&nbsp;Mean&nbsp;Absolute&nbsp;Error&nbsp;)<br>
--&nbsp;MSE&nbsp;(&nbsp;Mean&nbsp;Squared&nbsp;Error&nbsp;)<br>
--&nbsp;RMSE&nbsp;(&nbsp;Root&nbsp;Mean&nbsp;Squared&nbsp;Error&nbsp;)<br>
--&nbsp;R2&nbsp;Score<br>
--&nbsp;MAPE&nbsp;(&nbsp;Mean&nbsp;Absolute&nbsp;Percentage&nbsp;Error&nbsp;)<br>
-&nbsp;<br>
-Returns:<br>
-dict&nbsp;con&nbsp;tutte&nbsp;le&nbsp;metriche&nbsp;calcolate</span></dd></dl>
- <dl><dt><a name="-confronta_modelli"><strong>confronta_modelli</strong></a>(risultati: dict, y_test) -&gt; str</dt><dd><span class="code">Confronta&nbsp;tutti&nbsp;i&nbsp;modelli&nbsp;e&nbsp;determina&nbsp;il&nbsp;migliore.<br>
-&nbsp;<br>
-Args:<br>
-risultati:&nbsp;dizionario&nbsp;con&nbsp;i&nbsp;risultati&nbsp;di&nbsp;ogni&nbsp;modello<br>
-&nbsp;<br>
-Returns:<br>
-str:&nbsp;nome&nbsp;del&nbsp;modello&nbsp;migliore</span></dd></dl>
+<td class="singlecolumn"><dl><dt><a name="-calcola_metriche"><strong>calcola_metriche</strong></a>(y_true, y_pred) -&gt; dict</dt><dd><span class="code">Calcola&nbsp;le&nbsp;principali&nbsp;metriche&nbsp;di&nbsp;valutazione&nbsp;per&nbsp;la&nbsp;regressione.</span></dd></dl>
+ <dl><dt><a name="-confronta_modelli"><strong>confronta_modelli</strong></a>(risultati: dict, y_test) -&gt; str</dt><dd><span class="code">Determina&nbsp;il&nbsp;modello&nbsp;migliore&nbsp;basandosi&nbsp;sul&nbsp;punteggio&nbsp;R2&nbsp;più&nbsp;alto.</span></dd></dl>
  <dl><dt><a name="-cross_validation_modello"><strong>cross_validation_modello</strong></a>(modello, X, y, cv: int = 5) -&gt; dict</dt><dd><span class="code">Esegue&nbsp;la&nbsp;cross-validation&nbsp;su&nbsp;un&nbsp;modello.<br>
 &nbsp;<br>
 Returns:<br>
 dict&nbsp;con:&nbsp;’scores’,&nbsp;’media’,&nbsp;’deviazione_standard’</span></dd></dl>
- <dl><dt><a name="-genera_report_modelli"><strong>genera_report_modelli</strong></a>(risultati: dict, percorso_output: str) -&gt; None</dt><dd><span class="code">Genera&nbsp;un&nbsp;report&nbsp;testuale&nbsp;dettagliato&nbsp;con&nbsp;i&nbsp;risultati<br>
-di&nbsp;tutti&nbsp;i&nbsp;modelli&nbsp;,&nbsp;inclusa&nbsp;la&nbsp;cross&nbsp;-&nbsp;validation.<br>
-&nbsp;<br>
-Il&nbsp;report&nbsp;deve&nbsp;includere:<br>
--&nbsp;Tabella&nbsp;comparativa&nbsp;di&nbsp;tutti&nbsp;i&nbsp;modelli<br>
--&nbsp;Dettagli&nbsp;per&nbsp;ogni&nbsp;modello<br>
--&nbsp;Raccomandazione&nbsp;del&nbsp;modello&nbsp;migliore<br>
--&nbsp;Data&nbsp;e&nbsp;ora&nbsp;della&nbsp;generazione<br>
-&nbsp;<br>
-Salva&nbsp;nella&nbsp;cartella&nbsp;output/.</span></dd></dl>
+ <dl><dt><a name="-genera_report_modelli"><strong>genera_report_modelli</strong></a>(risultati: dict, y_test, percorso_output: str) -&gt; None</dt><dd><span class="code">Genera&nbsp;un&nbsp;file&nbsp;di&nbsp;testo&nbsp;con&nbsp;il&nbsp;confronto&nbsp;dettagliato&nbsp;e&nbsp;il&nbsp;verdetto&nbsp;finale.</span></dd></dl>
 </td></tr></table>
 </body></html>

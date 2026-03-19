@@ -1,37 +1,6 @@
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, mean_absolute_percentage_error
 from sklearn.model_selection import cross_val_score
 import numpy as np
-import os
-from datetime import datetime
-
-
-def calcola_metriche(y_true, y_pred) -> dict:
-    """
-    Calcola le metriche di valutazione per la regressione:
-    - MAE ( Mean Absolute Error )
-    - MSE ( Mean Squared Error )
-    - RMSE ( Root Mean Squared Error )
-    - R2 Score
-    - MAPE ( Mean Absolute Percentage Error )
-
-    Returns:
-    dict con tutte le metriche calcolate
-    """
-
-    mae = mean_absolute_error(y_true, y_pred)
-    mse = mean_squared_error(y_true, y_pred)
-    rmse = mse ** 0.5
-    r2 = r2_score(y_true, y_pred)
-    mape = (abs((y_true - y_pred) / y_true).mean()) * 100
-
-    metriche = {
-        'MAE': mae,
-        'MSE': mse,
-        'RMSE': rmse,
-        'R2 Score': r2,
-        'MAPE': mape
-    }
-    return metriche
 
 
 def cross_validation_modello(modello, X, y, cv: int = 5) -> dict:
@@ -55,105 +24,61 @@ def cross_validation_modello(modello, X, y, cv: int = 5) -> dict:
     return risultati_cv
 
 
+def calcola_metriche(y_true, y_pred) -> dict:
+    """Calcola le principali metriche di valutazione per la regressione."""
+    mse = mean_squared_error(y_true, y_pred)
+    return {
+        'MAE': mean_absolute_error(y_true, y_pred),
+        'MSE': mse,
+        'RMSE': np.sqrt(mse),
+        'R2': r2_score(y_true, y_pred),
+        'MAPE': mean_absolute_percentage_error(y_true, y_pred)
+    }
+
+
 def confronta_modelli(risultati: dict, y_test) -> str:
-    """
-    Confronta tutti i modelli e determina il migliore.
+    """Determina il modello migliore basandosi sul punteggio R2 più alto."""
+    miglior_score = -float('inf')
+    miglior_nome = ""
 
-    Args:
-    risultati: dizionario con i risultati di ogni modello
+    for nome, dati in risultati.items():
+        metriche = calcola_metriche(y_test, dati['predizioni'])
+        # Usiamo l'R2 come discriminante (più è vicino a 1, meglio è)
+        if metriche['R2'] > miglior_score:
+            miglior_score = metriche['R2']
+            miglior_nome = nome
 
-    Returns:
-    str: nome del modello migliore
-    """
-
-    miglior_modello = None
-    minor_errore = float('inf')
-
-    print("\n--- Report Performance Modelli (MSE) ---")
-
-    for nome_modello, info in risultati.items():
-        # Otteniamo le predizioni salvate nel dizionario di ogni modello
-        predizioni = info['predizioni']
-
-        # Calcoliamo l'errore (MSE) confrontando predizioni e valori reali (y_test)
-        mse = ((predizioni - y_test) ** 2).mean()
-
-        print(f"Modello: {nome_modello:20} | MSE: {mse:.4f}")
-
-        # Se questo errore è il più basso visto finora, aggiorniamo il vincitore
-        if mse < minor_errore:
-            minor_errore = mse
-            miglior_modello = nome_modello
-
-    print("----------------------------------------")
-    print(f"IL MIGLIOR MODELLO È: {miglior_modello.upper()}")
-
-    return miglior_modello
+    return miglior_nome
 
 
-def genera_report_modelli(risultati: dict, percorso_output: str) -> None:
-    """
-    Genera un report testuale dettagliato con i risultati
-    di tutti i modelli , inclusa la cross - validation.
+def genera_report_modelli(risultati: dict, y_test, percorso_output: str) -> None:
+    """Genera un file di testo con il confronto dettagliato e il verdetto finale."""
+    migliore = confronta_modelli(risultati, y_test)
 
-    Il report deve includere:
-    - Tabella comparativa di tutti i modelli
-    - Dettagli per ogni modello
-    - Raccomandazione del modello migliore
-    - Data e ora della generazione
+    with open(percorso_output, 'w', encoding='utf-8') as f:
+        f.write("==============================================\n")
+        f.write("   REPORT VALUTAZIONE MODELLI - CALIFORNIA    \n")
+        f.write("==============================================\n\n")
 
-    Salva nella cartella output/.
-    """
-    # 1. Crea la cartella di output se non esiste
-    os.makedirs(os.path.dirname(percorso_output), exist_ok=True)
+        for nome, dati in risultati.items():
+            m = calcola_metriche(y_test, dati['predizioni'])
 
-    ora_generazione = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            f.write(f"--- MODELLO: {nome} ---\n")
+            # Se presente, riportiamo il parametro ottimale trovato
+            if 'miglior_k' in dati: f.write(f"Parametro scelto: k={dati['miglior_k']}\n")
+            if 'miglior_profondita' in dati: f.write(f"Parametro scelto: depth={dati['miglior_profondita']}\n")
+            if 'miglior_kernel' in dati: f.write(f"Parametro scelto: kernel={dati['miglior_kernel']}\n")
 
-    with open(percorso_output, "w", encoding="utf-8") as f:
-        # Intestazione
-        f.write("=" * 50 + "\n")
-        f.write(f"REPORT PRESTAZIONI MODELLI DI REGRESSIONE\n")
-        f.write(f"Data generazione: {ora_generazione}\n")
-        f.write("=" * 50 + "\n\n")
+            f.write(f"MAE:  {m['MAE']:.4f}\n")
+            f.write(f"MSE:  {m['MSE']:.4f}\n")
+            f.write(f"RMSE: {m['RMSE']:.4f}\n")
+            f.write(f"R2:   {m['R2']:.4f}\n")
+            f.write(f"MAPE: {m['MAPE']:.2%}\n")
+            f.write("-" * 30 + "\n\n")
 
-        # Sezione 1: Tabella Comparativa (Logica di confronto)
-        f.write("1. TABELLA COMPARATIVA\n")
-        f.write(f"{'Modello':25} | {'Parametro Migliore':20}\n")
-        f.write("-" * 50 + "\n")
-
-        miglior_modello_nome = ""
-        minor_errore_cv = float('inf')
-
-        for nome, info in risultati.items():
-            # Cerchiamo il parametro migliore (k, profondità, o kernel)
-            param = info.get('miglior_k', info.get('miglior_profondita', info.get('miglior_kernel', 'N/A')))
-            f.write(f"{nome:25} | {str(param):20}\n")
-
-            # Logica per determinare la raccomandazione (basata su CV se disponibile)
-            # Nota: usiamo l'ultimo MSE di cross-validation per decidere
-            mse_cv = info.get('mse_validazione', info.get('risultati_cv', {}).get(str(param), float('inf')))
-            if isinstance(mse_cv, float) and mse_cv < minor_errore_cv:
-                minor_errore_cv = mse_cv
-                miglior_modello_nome = nome
-
-        f.write("\n" + "=" * 50 + "\n")
-
-        # Sezione 2: Dettagli per ogni modello
-        f.write("2. DETTAGLI MODELLI\n")
-        for nome, info in risultati.items():
-            f.write(f"\n>>> MODELLO: {nome.upper()}\n")
-            for chiave, valore in info.items():
-                if chiave != 'predizioni' and chiave != 'modello':  # Escludiamo i dati pesanti
-                    f.write(f"   {chiave}: {valore}\n")
-
-        # Sezione 3: Raccomandazione finale
-        f.write("\n" + "=" * 50 + "\n")
-        f.write("3. RACCOMANDAZIONE FINALE\n")
-        f.write(f"Basandosi sui risultati della Cross-Validation,\n")
-        f.write(f"il modello consigliato è: {miglior_modello_nome.upper()}\n")
-        f.write("=" * 50 + "\n")
+        f.write("==============================================\n")
+        f.write(f" RACCOMANDAZIONE FINALE: {migliore.upper()} \n")
+        f.write("==============================================\n")
 
     print(f"Report generato con successo in: {percorso_output}")
-
-
 

@@ -1,5 +1,3 @@
-
-
 """
 Progetto Previsione Prezzi Immobiliari
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -69,7 +67,7 @@ def fase_modelli(df):
     """ Fase 4: Addestramento e valutazione dei modelli. """
     X_train, X_test, y_train, y_test = dividi_dataset(df, df.columns[-1], test_size=0.2, random_state=42)
     risultati = addestra_tutti_i_modelli(X_train, y_train, X_test)
-    genera_report_modelli(risultati, "output/report_modelli.txt")
+    genera_report_modelli(risultati, y_test, "output/report_modelli.txt")
 
 def main():
     """ Funzione principale che gestisce il flusso del programma. """

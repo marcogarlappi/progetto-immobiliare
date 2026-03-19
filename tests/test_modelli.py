@@ -2,6 +2,7 @@ import unittest
 from src.modelli import dividi_dataset
 from src.valutazione import calcola_metriche
 import pandas as pd
+import numpy as np
 
 class TestDividiDataset(unittest.TestCase):
 
@@ -58,15 +59,13 @@ class TestCalcolaMetriche(unittest.TestCase):
 
     def setUp(self):
         """Prepara due array di test: uno reale e uno predetto."""
-        # Usiamo Series di Pandas per simulare l'output tipico dei modelli
         self.y_true = pd.Series([100.0, 200.0, 300.0])
         self.y_pred = pd.Series([110.0, 190.0, 300.0])
 
-        # Calcoli manuali per la verifica:
-        # Errori: [+10, -10, 0]
-        # Assoluti: [10, 10, 0] -> MAE = 20/3 = 6.666...
-        # Quadrati: [100, 100, 0] -> MSE = 200/3 = 66.666...
-        # MAPE: [(10/100), (10/200), (0/300)] -> (0.1 + 0.05 + 0) / 3 * 100 = 5.0%
+        # Riassunto calcoli manuali corretti per sklearn:
+        # MAE: (10 + 10 + 0) / 3 = 6.666...
+        # MSE: (100 + 100 + 0) / 3 = 66.666...
+        # MAPE: (0.1 + 0.05 + 0) / 3 = 0.05  <-- Nota: sklearn usa il decimale
 
     def test_valori_metriche_base(self):
         """Verifica che MAE, MSE e RMSE siano calcolati correttamente."""
@@ -74,24 +73,25 @@ class TestCalcolaMetriche(unittest.TestCase):
 
         self.assertAlmostEqual(risultati['MAE'], 6.6666667, places=5)
         self.assertAlmostEqual(risultati['MSE'], 66.6666667, places=5)
-        self.assertAlmostEqual(risultati['RMSE'], 66.6666667 ** 0.5, places=5)
+        self.assertAlmostEqual(risultati['RMSE'], np.sqrt(66.6666667), places=5)
 
     def test_r2_perfetto(self):
-        """Verifica che il punteggio R2 sia 1.0 se le predizioni sono identiche ai valori reali."""
+        """Verifica che il punteggio R2 sia 1.0 se le predizioni sono identiche."""
         risultati = calcola_metriche(self.y_true, self.y_true)
-        self.assertEqual(risultati['R2 Score'], 1.0)
+        # Usiamo la chiave 'R2' come definito nella funzione
+        self.assertEqual(risultati['R2'], 1.0)
 
     def test_mape_calcolo(self):
-        """Verifica il calcolo della percentuale di errore (MAPE)."""
+        """Verifica il calcolo della percentuale di errore (MAPE) in formato decimale."""
         risultati = calcola_metriche(self.y_true, self.y_pred)
-        # In base ai nostri dati nel setUp, il MAPE atteso è 5.0%
-        self.assertAlmostEqual(risultati['MAPE'], 5.0, places=2)
+        # Ci aspettiamo 0.05 (che corrisponde al 5%)
+        self.assertAlmostEqual(risultati['MAPE'], 0.05, places=5)
 
     def test_output_formato(self):
-        """Verifica che la funzione restituisca tutte le chiavi richieste nel dizionario."""
+        """Verifica che la funzione restituisca esattamente le chiavi richieste."""
         risultati = calcola_metriche(self.y_true, self.y_pred)
-        chiavi_attese = {'MAE', 'MSE', 'RMSE', 'R2 Score', 'MAPE'}
-        self.assertTrue(chiavi_attese.issubset(risultati.keys()))
+        chiavi_attese = {'MAE', 'MSE', 'RMSE', 'R2', 'MAPE'}
+        self.assertEqual(set(risultati.keys()), chiavi_attese)
 
 
 if __name__ == '__main__':

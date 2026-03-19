@@ -1,40 +1,42 @@
-==================================================
-REPORT PRESTAZIONI MODELLI DI REGRESSIONE
-Data generazione: 2026-03-04 14:27:44
-==================================================
+==============================================
+   REPORT VALUTAZIONE MODELLI - CALIFORNIA    
+==============================================
 
-1. TABELLA COMPARATIVA
-Modello                   | Parametro Migliore  
---------------------------------------------------
-regressione_lineare       | N/A                 
-knn                       | 9                   
-decision_tree             | 10                  
-svr                       | rbf                 
+--- MODELLO: Linear Regression ---
+MAE:  0.5332
+MSE:  0.5559
+RMSE: 0.7456
+R2:   0.5758
+MAPE: 31.95%
+------------------------------
 
-==================================================
-2. DETTAGLI MODELLI
+--- MODELLO: KNN ---
+Parametro scelto: k=9
+MAE:  0.4228
+MSE:  0.3988
+RMSE: 0.6315
+R2:   0.6957
+MAPE: 23.01%
+------------------------------
 
->>> MODELLO: REGRESSIONE_LINEARE
-   coefficienti: [  6.50587593   0.49593713 -17.39635295  26.41808819  -0.07241483
-  -4.38194802  -3.9502473   -4.35442897]
-   intercetta: 3.636539898616288
+--- MODELLO: Decision Tree ---
+Parametro scelto: depth=10
+MAE:  0.4335
+MSE:  0.4163
+RMSE: 0.6452
+R2:   0.6823
+MAPE: 25.00%
+------------------------------
 
->>> MODELLO: KNN
-   modello_ottimizzato: KNeighborsRegressor(n_neighbors=9)
-   miglior_k: 9
-   mse_validazione: 0.3925573962782427
-   tutti_i_risultati: {3: {'mse_cv': np.float64(0.42967687148270156)}, 5: {'mse_cv': np.float64(0.3976726339532607)}, 7: {'mse_cv': np.float64(0.39377012858179555)}, 9: {'mse_cv': np.float64(0.3925573962782427)}, 11: {'mse_cv': np.float64(0.39370820385034666)}}
+--- MODELLO: SVR ---
+Parametro scelto: kernel=rbf
+MAE:  0.4584
+MSE:  0.4740
+RMSE: 0.6885
+R2:   0.6383
+MAPE: 24.22%
+------------------------------
 
->>> MODELLO: DECISION_TREE
-   miglior_profondita: 10
-   importanza_feature: {'MedInc': np.float64(0.6097562119081917), 'HouseAge': np.float64(0.044280764107257224), 'AveRooms': np.float64(0.03943259034049418), 'AveBedrms': np.float64(0.012607342326051091), 'Population': np.float64(0.016740013400493088), 'AveOccup': np.float64(0.13080301627748075), 'Latitude': np.float64(0.080243375309141), 'Longitude': np.float64(0.06613668633089094)}
-
->>> MODELLO: SVR
-   miglior_kernel: rbf
-   risultati_cv: {'linear': np.float64(0.5528926473442046), 'rbf': np.float64(0.45379006791384235), 'poly': np.float64(0.5200214947240733)}
-
-==================================================
-3. RACCOMANDAZIONE FINALE
-Basandosi sui risultati della Cross-Validation,
-il modello consigliato è: KNN
-==================================================
+==============================================
+ RACCOMANDAZIONE FINALE: KNN 
+==============================================
